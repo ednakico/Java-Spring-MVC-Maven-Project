@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Namjestaj | Katalog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+
+    <style>
+        .myButton {
+            box-shadow: 0px 1px 0px 0px #fff6af;
+            background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+            background-color:#ffec64;
+            border-radius:6px;
+            border:1px solid #ffaa22;
+            display:inline-block;
+            cursor:pointer;
+            color:black;
+            font-family:Arial;
+            font-size:15px;
+            font-weight:bold;
+            padding:6px 24px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #ffee66;
+        }
+        .myButton:hover {
+            background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+            background-color:#ffab23;
+        }
+        .myButton:active {
+            position:relative;
+            top:1px;
+        }
+
+        dl { width: 100% }
+        dt { float: left; width: 90%; overflow: hidden; white-space: nowrap }
+        dd { float: left; width: 10%; overflow: hidden }
+
+        dt span:after { content: " ................................................................................................................................................................................................................................................." }
+    </style>
+</head>
+<body>
+<nav class="nav nav-pills nav-justified">
+    <a class="nav-item nav-link" th:href="@{'/'}">>Početna</a>
+    <a class="nav-item nav-link active" th:href="@{'/katalog'}">Katalog</a>
+</nav>
+<div style="display: flex; justify-content: flex-start; align-items: center; margin: 20px;">
+    <a class="myButton" th:href="@{'/azuriraj'}" role="button">Ažuriranje</a>
+    <a class="myButton" th:href="@{'/korpa'}" role="button" style="margin-left: 10px;">Korpa</a>
+</div>
+<div class="container" id="menu">
+    <div class="w3-col l6 w3-padding-large">
+        <dl th:each="produkt : ${katalog}" >
+        <dt><a th:href="@{'/katalog/produkt?id=' + ${produkt.getId()}}" th:text="${produkt.getNaziv()}"></a></dt>
+        <dd th:text="${produkt.getCijena()} + 'KM'">Cijena</dd>
+        <a th:href="@{'/korpa/dodaj?id=' + ${produkt.getId()}}" type="button" class="myButton" >+</a>
+        </dl>
+        <hr>
+        <hr>
+    </div>
+</div>
+</body>
+</html>

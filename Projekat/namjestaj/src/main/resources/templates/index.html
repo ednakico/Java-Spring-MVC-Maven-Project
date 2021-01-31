@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Namjestaj | Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+<body>
+<nav class="nav nav-pills nav-justified">
+    <a class="nav-item nav-link active" href="/">Početna</a>
+    <a class="nav-item nav-link" th:href="@{'/katalog'}">Katalog</a>
+</nav>
+<section class="home-slider owl-carousel img about" style="background-image: url('https://cdn.wallpapersafari.com/95/29/IwosCW.jpg'); background-repeat: no-repeat; background-position: center; background-size: cover; height: 100vh; width: 100%; display: flex; justify-content: center; align-items: center;">
+    <div class="slider-item">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row slider-text align-items-center" data-scrollax-parent="true">
+
+                <div class="col-md-12 col-sm-12">
+                    <h1 class="mb-12" style="color: whitesmoke; font-size: 4rem">Najljepši Ručno Rađeni Namještaj</h1>
+                    <p style="color: white;" class="mb-4 mb-md-5">Proizvodi visokog kvaliteta i unikatnog dizajna. Dozvolite nam da Vam uljepšamo dom svojim proizvodima odabranim samo za Vas.</p>
+                    <p><a th:href="@{'/katalog'}" class="btn btn-info p-3 px-xl-4 py-xl-3">Katalog</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="about">
+    <div class="w3-col m6 w3-padding-large" style="height: 20vh; width: 100%; background-color: rgb(63,17,44); color: white; font-size: 1.2rem;">
+        <h1 class="w3-center">O nama</h1><br>
+        <h5 class="w3-center">Namještaj iz snova, za vaše sne</h5>
+        <p class="w3-large">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis debitis distinctio, itaque nihil numquam voluptates.<span class="w3-tag w3-light-grey"> Najljepši</span> dizajn.</p>
+        <p class="w3-large w3-text-grey w3-hide-medium">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, eligendi.</p>
+    </div>
+</div>
+<div class="w3-container w3-padding-64" id="contact">
+    <h1>Kontaktirajte nas</h1><br>
+    <p> Želite promijeniti izgled stana? Onda nas nazovite slobodno, uz našu pomoć, vaš stan izgledat će besprijekorno. </p>
+    <p class="w3-text-blue-grey w3-large"><b>Namještaj Edna, 72240 Kakanj, Bosna i Hercegovina</b></p>
+    <p>Broj telefona: 061 962 492</p>
+</div>
+<footer class="w3-center w3-light-grey w3-padding-32">
+    <p>Owned by: <a href="www.ednakico.com" title="edna" target="_blank" class="w3-hover-text-green">Edna Kićo</a></p>
+</footer>
+</body>
+</html>

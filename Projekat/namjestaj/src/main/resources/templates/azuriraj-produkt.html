@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Namjestaj | Ažuriraj Jelo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+    <style>
+        .myButton {
+            box-shadow: 0px 1px 0px 0px #fff6af;
+            background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+            background-color:#ffec64;
+            border-radius:6px;
+            border:1px solid #ffaa22;
+            display:inline-block;
+            cursor:pointer;
+            color:black;
+            font-family:Arial;
+            font-size:15px;
+            font-weight:bold;
+            padding:6px 24px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #ffee66;
+        }
+        .myButton:hover {
+            background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+            background-color:#ffab23;
+        }
+        .myButton:active {
+            position:relative;
+            top:1px;
+        }
+
+        dl { width: 100% }
+        dt { float: left; width: 90%; overflow: hidden; white-space: nowrap }
+        dd { float: left; width: 10%; overflow: hidden }
+
+        dt span:after { content: " ................................................................................................................................................................................................................................................." }
+    </style>
+</head>
+<body>
+<nav class="nav nav-pills nav-justified">
+    <a class="nav-item nav-link active" >Edit</a>
+    <a class="nav-item nav-link" th:href="@{'/katalog'}">Katalog</a>
+</nav>
+<div class="container" style="background-image: url('https://cdn.wallpapersafari.com/95/29/IwosCW.jpg'); opacity: 0.5; background-repeat: no-repeat; background-position: center; background-size: cover; height: 100vh; width: 100%; display: flex; justify-content: center; align-items: center;">
+    <form action="#" th:action="@{'/save'}" th:object="${noviProdukt}" method="post">
+        <div align="left">
+            <tr>
+                <label class="form-label">Naziv</label>
+                <td>
+                    <input type="hidden" th:field="*{id}"/>
+                    <input type="text" th:text="${trenutniProdukt.getNaziv()}" th:field="*{naziv}" class="form-control"
+                           placeholder="Naziv namještaja"/>
+                </td>
+            </tr>
+        </div>
+        <div align="left">
+            <tr>
+                <label class="form-label">Cijena</label>
+                <td>
+                    <input type="text"  th:text="${trenutniProdukt.getCijena()}" th:field="*{cijena}" class="form-control"
+                           placeholder="Cijena namještaja"/>
+                </td>
+            </tr>
+        </div>
+        <div align="left">
+            <tr>
+                <label for="kategorijaa">Kategorija</label>
+                <td>
+                    <select th:field="*{kategorija_id}" class="form-control" id="kategorijaa">
+                        <option th:each="kategorija : ${kategorije}" th:text="${kategorija.getNaziv()}" th:value="${kategorija.getId()}">1</option>
+                    </select>
+                </td>
+            </tr>
+        </div>
+        <br/>
+        <tr>
+            <td colspan="2">
+                <button type="submit" class="btn btn-success">Dodaj</button>
+            </td>
+        </tr>
+    </form>
+</div>
+</body>
+</html>

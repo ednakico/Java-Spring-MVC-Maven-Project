@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Namjestaj | Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+    <style>
+        .myButton {
+            box-shadow: 0px 1px 0px 0px #fff6af;
+            background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+            background-color:#ffec64;
+            border-radius:6px;
+            border:1px solid #ffaa22;
+            display:inline-block;
+            cursor:pointer;
+            color:black;
+            font-family:Arial;
+            font-size:15px;
+            font-weight:bold;
+            padding:6px 24px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #ffee66;
+        }
+        .myButton:hover {
+            background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+            background-color:#ffab23;
+        }
+        .myButton:active {
+            position:relative;
+            top:1px;
+        }
+
+        dl { width: 100% }
+        dt { float: left; width: 90%; overflow: hidden; white-space: nowrap }
+        dd { float: left; width: 10%; overflow: hidden }
+
+        dt span:after { content: " ................................................................................................................................................................................................................................................." }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div style="background-image: url('https://cdn.wallpapersafari.com/95/29/IwosCW.jpg'); background-repeat: no-repeat; background-position: center; background-size: cover; height: 100vh; width: 100%; display: flex; justify-content: center; align-items: center;">
+        <form th:action="@{/login}" method="post">
+            <div class="form-group" style="color: white">
+                <div class="form-group"><label> Korisničko ime : <input class="form-control" type="text" name="username"/> </label></div>
+                <div class="form-group"><label> Lozinka: <input class="form-control" type="password" name="password"/> </label></div>
+                <div class="form-group"><input type="submit" class="myButton" value="Login"/></div>
+            </div>
+        </form>
+        <br>
+        <div th:if="${param.error}">
+            Pogrešni podaci.
+        </div>
+        <br>
+        <div th:if="${param.logout}">
+            Odjavljeni ste.
+        </div>
+    </div>
+</div>
+</body>
+</html>

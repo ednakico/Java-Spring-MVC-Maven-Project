@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Namjestaj | Korpa</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+
+    <style>
+        .myButton {
+            box-shadow: 0px 1px 0px 0px #fff6af;
+            background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+            background-color:#ffec64;
+            border-radius:6px;
+            border:1px solid #ffaa22;
+            display:inline-block;
+            cursor:pointer;
+            color:black;
+            font-family:Arial;
+            font-size:15px;
+            font-weight:bold;
+            padding:6px 24px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #ffee66;
+        }
+        .myButton:hover {
+            background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+            background-color:#ffab23;
+        }
+        .myButton:active {
+            position:relative;
+            top:1px;
+        }
+
+        dl { width: 100% }
+        dt { float: left; width: 90%; overflow: hidden; white-space: nowrap }
+        dd { float: left; width: 10%; overflow: hidden }
+
+        dt span:after { content: " ................................................................................................................................................................................................................................................." }
+    </style>
+
+</head>
+<body>
+<nav class="nav nav-pills nav-justified">
+    <a class="nav-item nav-link active" th:href="@{'/'}">Početna</a>
+    <a class="nav-item nav-link" th:href="@{'/katalog'}">Katalog</a>
+</nav>
+<div style="background-image: url('https://cdn.wallpapersafari.com/95/29/IwosCW.jpg'); opacity: 0.7; background-repeat: no-repeat; background-position: center; background-size: cover; height: 100vh; width: 100%;">
+    <div th:each="proizvod : ${korpa}" class="container">
+        <dl>
+            <dt><span th:text="${proizvod.getNaziv()}">Naziv</span></dt>
+            <dd th:text="${proizvod.getCijena()} + 'BAM'">Cijena</dd>
+        </dl>
+    </div>
+
+    <div class="container">
+        <div>
+            <h1 th:text="'Ukupno za platiti:' + ${cijena} + 'KM'"></h1>
+        </div>
+        <br>
+        <a th:href="@{'/korpa/kraj'}" type="button" class="myButton">Završi kupovinu</a>
+    </div>
+</div>
+<br>
+<br>
+<hr>
+</body>
+</html>
